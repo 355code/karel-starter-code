@@ -1,0 +1,51 @@
+:root{
+    --dog-img: url("https://i.ibb.co/tm5nFnC/dog.png"); 
+    /* dog icon from flaticon.com */
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.grid{
+    --grid-size: 10;
+    --box-size: 30px;
+    display: grid;
+    height: fit-content;
+    width: fit-content;
+    margin: 50px;
+    grid-template-columns: repeat(var(--grid-size), auto);
+    grid-template-rows: repeat(var(--grid-size), auto);
+    border: solid 3px;
+    border-radius: 5px;
+}
+
+.box{
+    position: relative;
+    height: var(--box-size);
+    width: var(--box-size);
+    border: solid 0.5px;
+    border-color: gray;
+    background-color: whitesmoke;
+}
+
+.ball{
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.karel{
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    background: var(--dog-img);
+    background-size: contain;
+    z-index: 1;
+}
