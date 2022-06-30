@@ -200,16 +200,23 @@ class Karel extends HTMLElement {
         }, [INTERVALS[SPEEDS.indexOf(speed)] * counter])
     }
 
-    draw() {
-        ctx.fillStyle = "black";
-        ctx.moveTo((this._location[1] - 0.5)*boxSize, (this._location[0] - 0.5)*boxSize);
+    draw(color) {
+        // counter++
+        console.log(color)
+        setTimeout(() => {
+            ctx.beginPath();
+            ctx.moveTo((this._location[1] - 0.5) * boxSize, (this._location[0] - 0.5) * boxSize);
+        }, [INTERVALS[SPEEDS.indexOf(speed)] * counter])
         this.moveOne()
             .then((newCoords) => {
-                console.log(newCoords);
+                ctx.strokeStyle = color || "black";
                 ctx.lineTo((newCoords[1] - 0.5) * boxSize, (newCoords[0] - 0.5) * boxSize);
+                ctx.closePath();
                 ctx.stroke()
             });
+
     }
+
 }
 
 customElements.define('karel-dog', Karel)
@@ -294,6 +301,7 @@ const lineDisplayWrapper = document.getElementById("line-display-wrapper")
 const executeCode = (code) => {
     counter = 1;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx = canvas.getContext('2d');
     KAREL.remove()
     startGame()
     const script = document.createElement("script");
@@ -342,12 +350,3 @@ runButton.addEventListener('click', () => executeCode(code));
 
 // }
 // code.addEventListener('keydown', handleNewLine);
-
-
-
-
-
-
-
-
-
