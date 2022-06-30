@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
-		<title>Karel</title>
-	</head>
-	<body>
-		<div class="grid" id="grid"></div>
-	</body>
+
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<script defer src="script.js"></script>
+    <title>Karel</title>
+</head>
+
+<body>
+    <div class="controls-wrapper">
+        <label for="box-control">Box Size <span id="box-size">50px</span></label>
+        <input id="box-control" type="range" value="50"/>
+        <label for="grid-control">Grid Size <span id="grid-size">10x10</span></label>
+        <input id="grid-control" type="range" min="1" max="30" step="1" value="10" list="tickmarks"/>
+    </div>
+    <div class="playground">
+        <div class="code-wrapper">
+            <textarea class="code" id="code" spellcheck="false"></textarea>
+            <div class="line-display-wrapper" id="line-display-wrapper">
+                <div class="line-display" id="line-display"><span id="line-text">1</span><span>|</span>
+                </div>
+            </div>
+            <button id="run">Run</button>
+        </div>
+        <div class="display" id="display">
+            <div class="grid" id="grid"></div>
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+</body>
+
 </html>
