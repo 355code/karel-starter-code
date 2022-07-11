@@ -206,7 +206,6 @@ class Karel extends HTMLElement {
 
     draw(color) {
         // counter++
-        console.log(color)
         setTimeout(() => {
             ctx.beginPath();
             ctx.moveTo((this._location[1] - 0.5) * boxSize, (this._location[0] - 0.5) * boxSize);
@@ -312,6 +311,7 @@ KAREL.turnRight()
 KAREL.putBall(color: String)
 KAREL.place(row: Number, column: Number)
 KAREL.directon
+KAREL.draw(color: String)
 
 KAREL.isFrontClear().then((isClear)=>{
     if(isClear){
@@ -332,7 +332,7 @@ KAREL.isFacing(direction: String).then((isFacing)=>{
 */
 
 //uncomment the following line to change speed
-//speed = 'very fast'
+//speed = 'very slow'
 
 //options - 'very slow', 'slow', 'regular', 'fast', 'very fast';
 
@@ -348,7 +348,7 @@ startGame()
 
 
 
-
-
 //do not add code below this line
 }
+
+
