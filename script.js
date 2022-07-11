@@ -217,6 +217,35 @@ class Karel extends HTMLElement {
 
     }
 
+    isFrontClear() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const loc = this._location;
+                const currentGridBox = document.getElementById(`${loc[0]}-${loc[1]}`);
+                if (currentGridBox.walls.includes(this._direction)) {
+                    resolve(false);
+                }
+                else {
+                    resolve(true);
+                }
+            }, [INTERVALS[SPEEDS.indexOf(speed)] * counter])
+        })
+
+    }
+
+    isFacing(direction) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (this._direction == direction) {
+                    resolve(true);
+                }
+                else {
+                    resolve(false);
+                }
+            }, [INTERVALS[SPEEDS.indexOf(speed)] * counter])
+        })
+    }
+
 }
 
 customElements.define('karel-dog', Karel)
@@ -265,88 +294,43 @@ const startGame = (startRow, startColumn) => {
     KAREL.place(startRow, startColumn);
 }
 
-createBoard(10, 45)
+createBoard(10, 50)
 startGame()
+
+//don't touch the code above this line
 
 /*commands:
 
 KAREL.turnLeft()
 KAREL.turnRight()
 KAREL.move()
+KAREL.putBall(color: String)
 KAREL.place(row: Number, column: Number)
 KAREL.directon
+
+KAREL.isFrontClear().then((isClear)=>{
+    if(isClear){
+    //code to execute if front is clear
+    }
+    else{
+    //code to execute if front is not clear
+    }
+})
+
+KAREL.isFacing(direction: String).then((isFacing)=>{
+    if(isFacing){
+    //code to execute if Karel is facing direction
+    }
+    else{
+    //code to execute if Karel is not facing direction
+    }
 */
 
-/*
-uncomment the following line to change speed
-options - 'very slow', 'slow', 'regular', 'fast', 'very fast';
-*/
-
+//uncomment the following line to change speed
 //speed = 'very fast'
+
+//options - 'very slow', 'slow', 'regular', 'fast', 'very fast';
+
 
 // write your code after this line:
 
-
-
-
-
-//
-
-//code editor UI
-const code = document.getElementById("code");
-const runButton = document.getElementById("run");
-const lineDisplay = document.getElementById("line-display")
-const lineDisplayWrapper = document.getElementById("line-display-wrapper")
-
-const executeCode = (code) => {
-    counter = 1;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // ctx = canvas.getContext('2d');
-    KAREL.remove()
-    startGame()
-    const script = document.createElement("script");
-    script.innerHTML = code.value;
-    document.body.append(script);
-}
-
-runButton.addEventListener('click', () => executeCode(code));
-
-// let lineNumber = 1;
-// let lineText = '1 ';
-
-// const handleNewLine = (event) => {
-//     const allLines = document.querySelectorAll(".line-display");
-//     let lastLine =  allLines[allLines.length - 1]
-//     let lastLineText = lastLine.children[0];
-
-//     if(event.key == 'Shift') return;
-
-//     if (event.key == 'Enter') {
-//         lineNumber++;
-//         lineText = lineNumber + " ";
-//         const newLine = lineDisplay.cloneNode(true);
-//         newLine.children[0].innerHTML = lineText;
-//         lineDisplayWrapper.append(newLine);
-//     }
-
-//     else if (event.key == 'Backspace') {
-//         if (lineText.length == 2 && lineText != "1 ") {
-//             lastLine.remove();
-//             lineNumber--
-//             lineText = allLines[allLines.length - 2].children[0].innerHTML
-//         }
-//         else if (lineText != "1 ") {
-//             console.log(lineText)
-//             lineText = lineText.slice(0, -1);
-//             lastLineText.innerHTML = lineText;
-//         }
-//     }
-
-//     else {
-//         lineText += event.key;
-//         lastLineText.innerHTML = lineText;
-//     }
-
-
-// }
-// code.addEventListener('keydown', handleNewLine);
