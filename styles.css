@@ -52,50 +52,10 @@ label{
     z-index: 1;
     opacity: 100%;
 }
-/* 
-.line-display-wrapper{
-    position: absolute;
-    top: 0;
-    width: 420px;
-    height: 500px;
-    background-color: lightgray;
-    padding: 5px;
-    padding-top: 60px;
-}
-
-.line-display{
-    width: 95%;
-    background-color: white;
-    height: fit-content;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: 1.2em;
-    letter-spacing: 1px;
-    padding: 0 5px 0;
-    margin: auto;
-}
-
-.line-display > span{
-    margin: 5px;
-    display: inline-block;
-    padding: 0;
-}
-
-.line-display > span:nth-child(2){
-margin: 0;
-font-size: 1.3em;
-display: none;
-}
-
-.line-display:last-child > span:nth-child(2){
-display: inline-block;
-} */
 
 #run{
     display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    margin: 0 auto 10px;
     height: 40px;
     width: 70px;
     background-color: deepskyblue;

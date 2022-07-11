@@ -5,6 +5,7 @@ const display = document.getElementById("display")
 const grid = document.getElementById("grid");
 const boxSizeDisplay = document.getElementById("box-size");
 const gridSizeDisplay = document.getElementById("grid-size");
+const run = document.getElementById("run")
 const DIRECTIONS = ["north", "east", "south", "west"]
 let KAREL;
 const SPEEDS = ['very slow', 'slow', 'regular', 'fast', 'very fast'];
@@ -100,7 +101,10 @@ class Karel extends HTMLElement {
     }
 
     get direction() {
-        return this._direction
+        counter++
+        setTimeout(() => {
+            console.log(this._direction)
+        }, [INTERVALS[SPEEDS.indexOf(speed)] * counter])
     }
     place(row, column) {
         if (row > gridSize || column > gridSize) return;
@@ -288,22 +292,23 @@ const createBoard = (gridSize, boxSize) => {
     }
 }
 
+run.addEventListener('click', runCode)
 
 const startGame = (startRow, startColumn) => {
     KAREL = new Karel();
     KAREL.place(startRow, startColumn);
 }
 
-createBoard(10, 50)
+createBoard(gridSize, boxSize)
 startGame()
 
 //don't touch the code above this line
 
 /*commands:
 
+KAREL.move()
 KAREL.turnLeft()
 KAREL.turnRight()
-KAREL.move()
 KAREL.putBall(color: String)
 KAREL.place(row: Number, column: Number)
 KAREL.directon
@@ -331,6 +336,19 @@ KAREL.isFacing(direction: String).then((isFacing)=>{
 
 //options - 'very slow', 'slow', 'regular', 'fast', 'very fast';
 
+function runCode(){
+KAREL.remove()
+startGame()
 
 // write your code after this line:
 
+
+
+
+
+
+
+
+
+//do not add code below this line
+}
