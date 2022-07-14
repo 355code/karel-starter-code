@@ -322,6 +322,10 @@ KAREL.isFrontClear().then((isClear)=>{
     }
 })
 
+**OR**
+
+isClear = await KAREL.isFrontClear()
+
 KAREL.isFacing(direction: String).then((isFacing)=>{
     if(isFacing){
     //code to execute if Karel is facing direction
@@ -329,6 +333,10 @@ KAREL.isFacing(direction: String).then((isFacing)=>{
     else{
     //code to execute if Karel is not facing direction
     }
+    
+**OR**
+
+isFacing = await KAREL.isFacing(direction: String)
 */
 
 //uncomment the following line to change speed
@@ -336,7 +344,7 @@ KAREL.isFacing(direction: String).then((isFacing)=>{
 
 //options - 'very slow', 'slow', 'regular', 'fast', 'very fast';
 
-function runCode(){
+async function runCode(){
 KAREL.remove()
 startGame()
 
